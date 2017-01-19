@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from astral import Astral, Location
 import time, sys, pytz
 from sh import ddcctl
+from tzlocal import get_localzone
 
 ####### CONFIGURATION STARTS HERE #######
 
@@ -50,6 +51,16 @@ if False:
     for i in range(1440):
         d2 = d.replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(minutes=i)
         print("%s %s" % (d2, get_level(location.sun(), d2)))
+
+
+if True:
+    print("Today times: (%s)" % get_localzone())
+    for t in ('dawn', 'sunrise', 'noon', 'sunset', 'dusk'):
+        title = (t.title()+":").ljust(9)
+        local_time = location.sun()[t].astimezone(get_localzone()).strftime('%H:%M')
+        print("  %s%s" % (title, local_time))
+
+print("")
 
 #./ddcctl -d 1 -b 20
 print("Setting brightness to: %s" % brightness)
