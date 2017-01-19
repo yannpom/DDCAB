@@ -47,9 +47,32 @@ Make sure ddcctl works with your setup:
 
 # Usage
 
-First try it to check everything works, then set up a crontab that runs every minute:
+First try it to check everything works:
+
+    % ./ddcab.py 
+    Today times: (Europe/Madrid)
+      Dawn:    07:40
+      Sunrise: 08:11
+      Noon:    12:55
+      Sunset:  17:38
+      Dusk:    18:10
+
+    Setting brightness to: 10
+    D: NSScreen #459110081 (3440x1440) DPI is 109.00
+    I: found 1 display
+    I: polling display 1's EDID
+    I: got edid.name: LG ULTRAWIDE
+    D: action: b: 10
+    D: setting VCP control #16 => 10
+
+
+Then set up a crontab that runs every minute:
 
     * * * * * /Users/yann/Documents/DDCAB/ddcab.py > /dev/null
+
+# See also
+
+I'm also using f.lux https://justgetflux.com to adjust my white temperature along the evening.
 
 # License
 
